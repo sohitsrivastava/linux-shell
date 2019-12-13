@@ -1,0 +1,74 @@
+puppet -DSL
+	   -	Client/serverarchitecture
+	   - here we write manifest
+		
+		
+chef - client/server architecture
+	 - we write cook books
+	 
+ansible - agent less
+		- yaml
+		- we write playbooks
+
+Salt Stack - 
+
+
+
+ANSIBLE - 
+- playbooks - YAML(yet another markup language) -- has extension .yml or .yaml
+- control machine
+- inventory
+
+Playbooks:
+
+3 sections
+
+- Hosts
+- Variables
+- Tasks
+
+# every playbook starts with --- and ends with ... but these are optional
+# they are case sensitive and indentation oriented
+
+#Example:
+
+---
+
+- hosts: weservers
+    become: true
+- tasks:
+    - name: "Installing httpd"
+          yum=httpd state=present 
+
+...
+
+ANSIBLE ROLES:
+First goto /etc/ansible/roles
+Syntax: ansible-galaxy init apache --offline
+
+
+
+
+
+
+
+
+
+
+
+
+Ansible Vault:
+TO encrypt any existing playbook
+Syntax : ansible-vault encrypt job.yml
+
+TO Decrypt 
+Syntax : ansible-vault decrypt job.yml
+
+To create a new 
+Syntax : ansible-vault create job.yml
+
+To edit
+Syntax : ansible-vault edit job.yml
+
+To change the password
+Syntax : ansible-vault rekey job.yml

@@ -1,0 +1,125 @@
+SHELL - interface between user and kernel
+
+types of shell
+
+- C shell
+- K shell (Korn)
+- bash shell (Bourne Again Shell)
+
+
+%% 
+I have 10 servers in my list 
+	192.168.10.101
+				02
+				03
+				 4
+				 5
+				 6
+				 7
+				 8
+				 9
+				10
+login to each server and check the disk space if the disk space is greater than 70%, if yes then delete or archive 30days older logfiles
+%%
+
+
+ssh - to jump from once server to another server
+scp - to copy file from one location to other location
+
+
+--------------------------------------
+
+#!/bin/bash - first line of SHELL script and called as Shebang, this line tells the kernel that the script will use a bash shell, 
+#!/bin/ksh - first line of SHELL script and called as Shebang, this line tells the kernel that the script will use a Korn shell
+#!/bin/csh - first line of SHELL script and called as Shebang, this line tells the kernel that the script will use a C shell
+
+
+----------------------------------------
+
+command line arguments:
+						$0 - script name
+						$* OR $@ - display the parameter passed to the script
+						$? - if command is executed successfully then it gives 0 else non-zero number
+						$# - number of parameters
+						$$ - know the process id of current process
+						$! - gives the background running process id
+						
+
+conditional statements:
+						if-else, case , OR , AND
+						if-else -> 
+								if [ logical condition ] 
+								then 
+								    statements
+								else
+									statements
+								fi
+						
+						case ->
+								case variable-name in
+									opt1) 
+										statements
+										;;
+									opt2) 
+										statements
+										;;
+										.
+										.
+										.
+										.
+									*) 
+										statements
+										;;
+								esac
+
+
+logical statements:						
+						OR ->
+								-o
+						
+						AND ->
+								-a
+
+
+comparative operators:
+						< --> -lt
+						> --> -gt
+						<= --> -le
+						>= --> -ge
+						!= --> -ne
+						== --> -eq
+						
+						
+Loops : 
+					- for
+					- while
+					
+					for -->
+						1-> 
+						for variable-name in logical-condition
+						do
+							statements
+						done
+						
+						2-> 
+						for((i-0;i<=10;i++))
+						do	
+							statements
+						done
+						
+					while -->
+						while location-condition
+						do
+							statements
+						done
+
+Arrays:	
+					collection of values (not necessary of the same type)
+					echo to print the first element array : ${array} , ${array[0]}
+					echo to print full array				 : ${array[@]} , ${array[*]} ${array[@]:0} , ${array[*]:0}
+					echo to print the full array from the nth element ${array[@]:n} , ${array[*]:n}
+					echo to print specific element		 : ${array[n]}
+					echo to print the lenght of the first element : ${#array[0] , ${#array}
+					echo to print the lenght of the nth element : ${#array[n]}
+					echo to print the lenght of the array : ${#array[@]}
+					echo to print a range of elements : ${array[@]:i:j}

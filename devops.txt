@@ -1,0 +1,124 @@
+ls -l 					- display files in alphabectic order
+pwd 					- current directory
+mkdir -p dir1/dir2/dir3			- create dir1 and then sub directory inside dir1 as dir2 and then another subdirectory under dir2 as dir3
+ls -lrt 				- lists down in reverse cronological order.. older first
+ls -lt 					- list is chronological order . latest first
+cd ../.. 				- go two directories back
+cd -	 				- go to most recently visited directory
+cd 					- go to home directory
+ls -lrti 				- to display with inode value ( buffer location of file ) 
+clear					- to clear the screen
+ctrl + l					- to clear the screen
+cp /root/filename .	  		- copy file from root to current directory
+.					- current directory
+/					- root directory
+~					- home directory
+chown owner:username fileorfoldername   - to change owner of a file or folder
+chown -r owner:username foldername   	- to change owner of all file or folder inside the foldername folder
+useradd username			- to add a user in linux
+cat /etc/passwd				- to check if user existing or not
+passwd username				- to change user password
+groupadd groupname			- to add usergroup
+cat /etc/group				- to check if group existing or not
+grep "Pyton" example	 		- search Pyton (case sensitive) in file example
+grep -i "pyton" example 		- search pyton (ignore cases) in file example
+find / -name "file*" 			- searching from root directory find the file or directory and path of all files/directory starting with file*
+find / -type f -name "file*" 		- searching from root directory find the file  and path of all files starting with file*
+find / -type d -name "file*"	 	- searching from root directory find the directory and path of all directory starting with file*
+find / -type d -name "*.log" -mtime +45			   - searching from root directory find the directory and path of all directory ending with *.log and more than 45days old (inclusive)
+find / -type d -name "*.log" -mmin +45 			   - searching from root directory find the directory and path of all directory ending with *.log and more 	than 45mins old (inclusive)
+find / -type d -name "*.log" -mtime +45 -exec rm -rf *.log - searching from root directory find the directory and path of all directory ending 	with *.log and more than 45days old (inclusive) and then deleting them.
+find / -type f -size +1G -name "*.log"  		   - find all files starting from root directory with size more than 1GB
+head -15 filename			- to display top 15 lines of a file. by default it will display first 10 lines
+tail -15 filename			- to dislay last 15 lines of a file. by default it will display last 10 lines
+tail -f filename 			- to monitor the file, by default it will keep displaying last 10 lines of the file
+df -h 					- to check disk space in human readable format
+df -k					- to check in kilobytes
+df -m					- to check in MB
+du -sh	/root/dir			- to check diskusage of specific directory
+free -m					- to check RAM utilisation or use -h to check in human readable format
+ps -ef					- display all the process in entire full format
+command1 | command2			- command1 output will be input for command2 , example : head -55 filename | tail -3 , will display 53rd 54th and 55th line of the file filename.
+netstat -alnp				- to check the ports that are open
+kill -9 PID				- to kill process with PID
+man commandname				- to get details of the command
+top					- to check utiliation
+
+
+
+
+
+
+
+
+
+chmod-
+
+
+r - 4
+w - 2
+x - 1
+
+d owner group other
+   rwx   rwx   rwx
+   421   400   420
+    7     4     6
+
+chmod 746 
+
+
+
+
+
+YZ718-4REEQ-08DHQ-JNYQC-ZQRD0
+
+command to view files - cat, more, less , view, 
+
+sed --> to print,delete specific lines character
+	: to print specific lines
+	
+
+
+commands to create fies
+touch
+nano
+vi
+cat
+gedit
+echo
+
+
+
+cat -->
+[root@ip-172-31-85-128 newdir]# cat > catfile2.txt
+new cat file create
+and saved by ctrl-d
+[root@ip-172-31-85-128 newdir]# ls
+
+[root@ip-172-31-85-128 newdir]# cat >>catfile2.txt
+Yes
+[root@ip-172-31-85-128 newdir]# cat catfile2.txt
+new cat file create
+and saved by ctrl-d
+Yes
+[root@ip-172-31-85-128 newdir]#
+
+vi -->
+i --> to start insert mode
+o -0> to enter insert mode in next line
+esc+:+set nu --> to show line numbers
+esc+:+w --> save (just to save but not exit)
+esc+:+wq! --> save and exit
+esc+:x --> save and exit
+esc+:+q! --> exit without save
+gg --> goto first line
+shift+g --> goto last line
+esc+u --> undo
+esc+ctlr+r --> redo
+esc+:+1 --> go to line number r
+esc+dd --> to delete the whole line
+esc+3dd --> to delete 3lines from the cursor including the line of the cursor
+esc+:+%s/wordtoreplace/wordtoreplacewith --> to replace a word
+
+
+

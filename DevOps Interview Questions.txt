@@ -1,0 +1,50 @@
+1. How you implement devops CI/CD pipeline?
+2. I want the last 10 lines of the file?
+3. How to check the exit status of the command?
+4. What is the use of $$ and &&?
+5. Write a shell script to print 1 to 10 numbers?
+6. I want to get the information from one file which consists of the "program" word?
+7. I want to search the files with the name of "text"
+8. How the git knows code committed to repository?
+9. How you manage version control system?
+10. What is the branding strategy you are following in your project?
+11. How you will do the release process?
+12. What is the dependency management?
+13. How you automate the whole build & deployment process
+14. I have 50 jobs in the dashboard, i want to build all the jobs at a time?
+15. What is jenkins file? explain
+16. What is the difference between continuous delivery and continuous deployment?
+17. How you do the artifacts management?
+18. How you will create the pipeline job in jenkins?
+19. I don’t have a cloud set up in jenkins? how can i access
+20. How you will integrate all the tools (BuildAndRelease) in jenkins?
+21. What are the types of failure while building & deploying
+22. How you will do te log management
+23. Write a POM.xml to create a war?
+24. How to pass the parameters to the shell script? how can i get?
+25. I want to connect with one server to another server witout password
+26. What are the default file permission? how can i cchange it?
+27. I want to install tomcat in 10 server at a time?
+28. What is the use of containerization?
+29. How to install jenkins via docker?
+30. Write a docker file that will install webserver?
+31. Write a playbook to install the jboss in 10 server
+32. What is the different between roles and playbooks?
+33. Did you ever participated in production developyment? fi yes what is the procedure?
+34. What are the best practice to have a smooth CI/CD pipeline?
+35. My application is not working for some reason? how are you bring it up?
+36. How you do the logs management?
+37. How you security the applications?
+38. What are the challenges you faced in recent time?
+39. Did you automate anything in your project? Explain
+40. What is IaC? how you will achieve this?
+41. What is your daily activities in your current role?
+42. What is auto scaling? and its types?
+43. What is multifactor authentication? use of this
+44. What are the security level in cloud?
+45. I want to copy the artifacts from one location to another location in cloud? How?
+46. How you will acchieve zero down time?
+47. What are the best practices for security in cloud?
+48. Distinguish software scalability and flexibility?
+49. How you will do code commit and code deploy in cloud?
+50. What is the need to go to cloud securities?

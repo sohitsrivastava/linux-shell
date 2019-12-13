@@ -1,0 +1,140 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  MyPublicSubnetCidr:
+    Description: Public Subnet CidrBlock
+    Type: String
+    Default: "10.0.1.0/24"
+  MyPrivateSubnetCidr:
+    Description: Public Subnet CidrBlock
+    Type: String
+    Default: "10.0.2.0/24"
+    
+Resources:
+  MyVPC:
+    Description: VPC to operate in
+    Type: 'AWS::EC2::VPC'
+    Properties:    
+      CidrBlock: 10.0.0.0/16
+  MyPublicSubnet:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: !Ref MyPublicSubnetCidr
+  MyPrivateSubnet:
+    Type: 'AWS::EC2::Subnet'
+    Properties:
+      VpcId: !Ref MyVPC
+      CidrBlock: !Ref MyPrivateSubnetCidr
+  MyPublicSubnetRouteTable:
+    Type: 'AWS::EC2::RouteTable'
+    Properties:
+      VpcId: !Ref MyVPC
+
+  MyNATGateway:
+    Type: 'AWS::EC2::NatGateway'
+    Properties:
+      SubnetId: !Ref MyPublicSubnet
+      AllocationId:
+        'Fn::GetAtt':
+          - MyEIP
+          - AllocationId
+
+  MyInternetGateway:
+    Type: 'AWS::EC2::InternetGateway'
+    Properties: {}
+
+  MyVPCGatewayAttachment:
+    Type: 'AWS::EC2::VPCGatewayAttachment'
+    Properties:
+      InternetGatewayId: !Ref MyInternetGateway
+      VpcId: !Ref MyVPC
+
+  MyPublicSubnetRouteTableAssociation:
+    Type: 'AWS::EC2::SubnetRouteTableAssociation'
+    Properties:
+      RouteTableId: !Ref MyPublicSubnetRouteTable
+      SubnetId: !Ref MyPublicSubnet
+
+  MyPrivateSubnetRouteTable:
+    Type: 'AWS::EC2::RouteTable'
+    Properties:
+      VpcId: !Ref MyVPC
+
+  MyPrivateSubnetRouteTableAssociation:
+    Type: 'AWS::EC2::SubnetRouteTableAssociation'
+    Properties:
+      RouteTableId: !Ref MyPrivateSubnetRouteTable
+      SubnetId: !Ref MyPrivateSubnet
+
+  MyEIP:
+    Type: 'AWS::EC2::EIP'
+    Properties:
+      Domain: VPC
+
+  MyprivateSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Private Security Group
+      VpcId: !Ref MyVPC
+
+  MypublicSecurityGroup:
+    Type: 'AWS::EC2::SecurityGroup'
+    Properties:
+      GroupDescription: Public Security Group
+      VpcId: !Ref MyVPC
+      SecurityGroupIngress: 
+        - IpProtocol: tcp
+          CidrIp: 0.0.0.0/0
+          FromPort: 22
+          ToPort: 22
+        - IpProtocol: tcp
+          CidrIp: 0.0.0.0/0
+          FromPort: 80
+          ToPort: 80
+
+  MyApplicationServer1:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: "ami-02913db388613c3e1"
+      KeyName: "newaccountmumbai"  
+      InstanceType: t2.micro
+      AvailabilityZone: ap-south-1a
+      SubnetId: !Ref MyPrivateSubnet
+      SecurityGroupIds:
+            - !Ref MyprivateSecurityGroup
+
+  MyApplicationServer2:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: "ami-02913db388613c3e1"
+      KeyName: "newaccountmumbai"  
+      InstanceType: t2.micro
+      AvailabilityZone: ap-south-1a
+      SubnetId: !Ref MyPrivateSubnet
+      SecurityGroupIds:
+            - !Ref MyprivateSecurityGroup
+
+  MyWebServer:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: "ami-02913db388613c3e1"
+      KeyName: "newaccountmumbai"  
+      InstanceType: t2.micro
+      AvailabilityZone: ap-south-1a
+      SubnetId: !Ref MyPublicSubnet
+      SecurityGroupIds:
+            - !Ref MypublicSecurityGroup
+        
+  MyPrivateRoute:
+    Type: 'AWS::EC2::Route'
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      RouteTableId: !Ref MyPrivateSubnetRouteTable
+      NatGatewayId: !Ref MyNATGateway
+
+  MyPublicRoute:
+    Type: 'AWS::EC2::Route'
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      RouteTableId: !Ref MyPublicSubnetRouteTable
+      GatewayId: !Ref MyInternetGateway
