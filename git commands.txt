@@ -1,0 +1,47 @@
+11-08-2019
+
+GIT - Distributed version control system
+
+create - add to staging area - commit - file available to all users associated to git repository
+
+git init repo-name --> to create a git repository
+git init --bare repo-name  --> to create empty repo
+git add file-name ----> to add files to the staging area
+git commit ----> to commit the staging files
+git status ---> to check status of repository
+git log ---> to check commits to the repository
+git log --oneline ---> this will show short commit logs.
+git commit -m "commit message" --> to commit by giving commit message in-line
+git checkout file-name ---> to discard local changes
+git stash --> to save local changes and clean working directory
+git stash list --> to check stash area
+git stash apply -->to pull file changes from stash into working directory.
+git stash apply stash@{index} --> to apply specific stash
+git stash drop/pop --> to remove most recent stash
+git stash clear --> to remove all the stash
+git stash drop stash@{index} --> to drop specific stash
+
+
+GIT Branches:
+git branch --> to list the branches
+git branch branch-name --> to create a new branch
+git checkout branch-name --> to switch to branch
+git show <commit-id> --> to show data for commit-id
+git show file-name --> to show history of the file
+git checkout -b branchn-name --> to create and checkout the new branch
+git revert commit-id --> to revert a particular commit
+git checkout file-name --> to checkout a particular file discarding any uncommited changes done to it
+git push branch-name --> to push the changes to branch
+git checkout tag-name --> pulls the changes with the tag-name and is read only
+git tag 
+
+-----------==============-------------
+Difference between 'git fetch' and 'git pull': 
+	git fetch only downloads new data but does not make any changes to your local. i.e it is "read only", 
+	whereas git pull downloads and makes changes to your local.
+-----------==============----------------
+
+Merge Conflicts:
+
+
+left : github, git tag, git bash, tortois git, git hub desktop
