@@ -1,0 +1,41 @@
+Docker Commands
+-------------------
+
+docker build -t <imagename> .   ---to Built image from docker file
+docker run -d --name <containername> -p 80:8080 <imagename>    -- to create container out of image and expose it to port
+docker run -it --name <containername> -p 80:8080 <imagename> sh  --to create a container in a interactive mode
+docker exec -it <containername> sh   --- to login to a container
+docker ps  ---to check details running container 
+docker ps -a   ---to check all the container (start/stop)
+docker images  ---- to check the images
+docker rm <containername>   ---- to remove/delete the container
+docker rmi <imageid>  ----- to delete the image
+service docker start/stop/restart  ----to start/restart/stop deoman service of docker
+docker start/restart/stop  <containername> ---- to start/stop/restart a container 
+docker tag <imagename> <newimagename> ------to tag a docker image
+docker push <imagename> ------- to push docker image to dockerhub
+
+
+Kubernetes Commands
+---------------------
+kubectl create -f pod.yaml/deploy.yaml -----------to create any k8s object using manifest file
+kubectl run <podname> --image=<imagename>  ---------- to create pod in imperative way
+kubectl create deploy <deploymentname> --image=<imagename> -------- to create deployment in imperative way
+kubectl scale deploy <deploymentname> --replicas=number --------- to scale up/down the deployment 
+kubectl get pods/deployment/namespace/configmap/secrets/services -------to get the k8s object details
+kubectl describe pod/deployment <podname/deploymentname>  ---------to get the complete details of k8s components 
+kubectl get pod/deployment <podname/deploymentname> -o yaml/json file.yaml/json ------- to copy the details of the k8s components to the yaml/json file
+kubectl create configmap <name> --from-literal variablename:value --------to create configmap
+kubectl create secret generic <name> --from-literal variablename:value --------to create secret of generic type
+
+Labels are key/value pairs that are attached to objects, such as pods. ... Labels can be used to organize and to select subsets of objects. 
+Via selector, the client/user can identify a set of objects. The label selector is the core grouping primitive in Kubernetes.
+
+
+Ansible Commands
+----------------------
+Ad-hoc commands in Ansible allow you to execute simple tasks at the command line against one or all of your hosts.
+
+ansible [pattern] -m [module] -a "[module options]"
+ansible webservers -m ansible.builtin.service -a "name=httpd state=stopped"
+
